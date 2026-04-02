@@ -12,9 +12,7 @@ namespace AppNuvemDesktop
         public frmPrincipal()
         {
             InitializeComponent();
-            lblPercentual.Parent = pbPreenchimento; 
-            lblPercentual.ForeColor = Color.White;
-            lblPercentual.TextAlign = ContentAlignment.MiddleCenter;
+
             AtualizarDashboardGeral();
         }
 
@@ -51,12 +49,7 @@ namespace AppNuvemDesktop
 
             lblPercentual.Text = $"{taxa:0.##}%";
 
-            int margem = 2;
-            lblPercentual.Left = Math.Max(2, larguraPreenchida - lblPercentual.Width);
 
-            if (lblPercentual.Left < margem) lblPercentual.Left = margem-10; 
-
-            lblPercentual.Top = (pbFundo.Height - lblPercentual.Height) / 2;
 
             if (taxa < 10) pbPreenchimento.BackColor = Color.Green;
             else if (taxa < 30) pbPreenchimento.BackColor = Color.Orange;
@@ -98,6 +91,23 @@ namespace AppNuvemDesktop
             lblTaxaPerdaMaquina.Text = $"Taxa de Perda: {taxaPerda:0.##}%";
         }
 
+        private void dgvRegistros_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                txtId.Text = dgvRegistros.Rows[e.RowIndex].Cells[0].Value.ToString();
 
+                int pecasBoas = Convert.ToInt32(dgvRegistros.Rows[e.RowIndex].Cells[2].Value.ToString());
+                int pecasRuins = Convert.ToInt32(dgvRegistros.Rows[e.RowIndex].Cells[3].Value.ToString());
+                int totalMaquina = pecasBoas + pecasRuins;
+                double taxaPerda = totalMaquina > 0 ? ((double)pecasRuins / totalMaquina) * 100 : 0;
+
+
+                lblProducaoMaquina.Text = $"Produção: {pecasBoas}";
+                lblPerdaMaquina.Text = $"Perda: {pecasRuins}";
+                lblTaxaPerdaMaquina.Text = $"Taxa de Perda: {taxaPerda:0.##}%";
+
+            }
+        }
     }
 }

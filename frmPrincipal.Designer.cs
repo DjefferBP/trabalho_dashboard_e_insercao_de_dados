@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.dgvRegistros = new System.Windows.Forms.DataGridView();
             this.chartRegistros = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -55,7 +55,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartRegistros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusMaquinasBindingSource)).BeginInit();
-            this.pbPreenchimento.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvRegistros
@@ -67,19 +66,21 @@
             this.dgvRegistros.Location = new System.Drawing.Point(522, 311);
             this.dgvRegistros.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.dgvRegistros.Name = "dgvRegistros";
+            this.dgvRegistros.ReadOnly = true;
             this.dgvRegistros.RowHeadersWidth = 51;
             this.dgvRegistros.Size = new System.Drawing.Size(764, 441);
             this.dgvRegistros.TabIndex = 0;
+            this.dgvRegistros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistros_CellClick);
             // 
             // chartRegistros
             // 
             this.chartRegistros.BorderlineColor = System.Drawing.Color.DarkGray;
             this.chartRegistros.BorderSkin.BackColor = System.Drawing.Color.Gainsboro;
             this.chartRegistros.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea1.Name = "ChartArea1";
-            this.chartRegistros.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartRegistros.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chartRegistros.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartRegistros.Legends.Add(legend4);
             this.chartRegistros.Location = new System.Drawing.Point(21, 311);
             this.chartRegistros.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.chartRegistros.Name = "chartRegistros";
@@ -234,7 +235,6 @@
             // pbPreenchimento
             // 
             this.pbPreenchimento.BackColor = System.Drawing.Color.Red;
-            this.pbPreenchimento.Controls.Add(this.lblPercentual);
             this.pbPreenchimento.Location = new System.Drawing.Point(41, 191);
             this.pbPreenchimento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbPreenchimento.Name = "pbPreenchimento";
@@ -243,15 +243,16 @@
             // 
             // lblPercentual
             // 
+            this.lblPercentual.AutoSize = true;
+            this.lblPercentual.BackColor = System.Drawing.Color.Transparent;
             this.lblPercentual.Font = new System.Drawing.Font("Consolas", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPercentual.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPercentual.Location = new System.Drawing.Point(4, 10);
+            this.lblPercentual.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblPercentual.Location = new System.Drawing.Point(36, 249);
             this.lblPercentual.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPercentual.Name = "lblPercentual";
-            this.lblPercentual.Size = new System.Drawing.Size(131, 27);
+            this.lblPercentual.Size = new System.Drawing.Size(38, 27);
             this.lblPercentual.TabIndex = 26;
             this.lblPercentual.Text = "0%";
-            this.lblPercentual.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmPrincipal
             // 
@@ -259,6 +260,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1315, 772);
+            this.Controls.Add(this.lblPercentual);
             this.Controls.Add(this.pbPreenchimento);
             this.Controls.Add(this.pbFundo);
             this.Controls.Add(this.lblTaxaPerdaMaquina);
@@ -286,7 +288,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartRegistros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusMaquinasBindingSource)).EndInit();
-            this.pbPreenchimento.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
